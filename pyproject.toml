@@ -1,0 +1,22 @@
+[project]
+name = "horse-park"
+version = "0.1.0"
+description = "Korean horse racing prediction model - data parsing and analysis"
+requires-python = ">=3.9"
+dependencies = [
+    "pdfplumber>=0.11.0",
+    "pandas>=2.2.0",
+    "pyarrow>=15.0.0",
+    "python-dotenv>=1.0.0",
+    "pytest>=8.4.2",
+    "matplotlib>=3.9.4",
+    "seaborn>=0.13.2",
+    "scipy>=1.13.1",
+    "scikit-learn>=1.6.1",
+]
+
+[project.optional-dependencies]
+dev = [
+    "ipython>=8.0.0",
+    "jupyter>=1.0.0",
+]
