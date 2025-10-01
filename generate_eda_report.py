@@ -6,14 +6,41 @@ Train Set Only (2013-2023)
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+import matplotlib.font_manager as fm
 import seaborn as sns
 from pathlib import Path
+import platform
 
 # 한글 폰트 설정
-plt.rcParams['font.family'] = 'AppleGothic'
-plt.rcParams['axes.unicode_minus'] = False
+def setup_korean_font():
+    """한글 폰트 자동 설정"""
+    system = platform.system()
+
+    if system == 'Darwin':  # macOS
+        font_path = '/System/Library/Fonts/AppleSDGothicNeo.ttc'
+        if Path(font_path).exists():
+            # 폰트 파일 직접 등록
+            font_entry = fm.FontEntry(fname=font_path, name='AppleSDGothicNeo')
+            fm.fontManager.ttflist.append(font_entry)
+
+            # rcParams 설정
+            plt.rcParams['font.family'] = 'AppleSDGothicNeo'
+            plt.rcParams['font.sans-serif'] = ['AppleSDGothicNeo', 'Apple SD Gothic Neo']
+            plt.rcParams['axes.unicode_minus'] = False
+
+            print(f"✓ 한글 폰트 설정: AppleSDGothicNeo ({font_path})")
+            return True
+        else:
+            print(f"⚠ AppleSDGothicNeo 폰트를 찾을 수 없습니다")
+
+    # 기본 설정
+    plt.rcParams['font.family'] = 'sans-serif'
+    plt.rcParams['axes.unicode_minus'] = False
+    return False
+
 sns.set_style('whitegrid')
 sns.set_palette('husl')
+setup_korean_font()  # seaborn 이후에 폰트 설정
 
 # 출력 디렉토리
 output_dir = Path('eda_output')
@@ -25,7 +52,7 @@ def main():
     print("=" * 100)
 
     # 데이터 로드
-    df = pd.read_parquet('race_results_full.parquet')
+    df = pd.read_parquet('data/race_results_full.parquet')
 
     # Train/Test Split
     train = df[df['trd_dt'].dt.year <= 2023].copy()

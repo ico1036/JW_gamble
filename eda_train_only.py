@@ -20,7 +20,7 @@ def main():
     print("=" * 100)
 
     # 데이터 로드
-    df = pd.read_parquet('race_results_full.parquet')
+    df = pd.read_parquet('data/race_results_full.parquet')
 
     # Train/Test Split (시계열)
     train = df[df['trd_dt'].dt.year <= 2023].copy()
