@@ -1,0 +1,22 @@
+[
+  "odds_win",
+  "odds_place",
+  "burden_weight",
+  "jockey_elite",
+  "trainer_elite",
+  "jockey_50x_top3_rate",
+  "trainer_50x_top3_rate",
+  "jockey_50x_races",
+  "trainer_50x_races",
+  "jockey_top3_rate",
+  "jockey_win_rate",
+  "trainer_top3_rate",
+  "trainer_win_rate",
+  "horse_top3_rate",
+  "horse_win_rate",
+  "horse_age",
+  "gate_no",
+  "track_encoded",
+  "horse_sex_encoded",
+  "is_high_odds"
+]
